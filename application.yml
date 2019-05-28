@@ -1,0 +1,24 @@
+environments:
+    production:
+        dataSource:
+            #Default embedded database
+            driverClassName:  'org.h2.Driver'
+            url: jdbc:h2:/db/streama;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            username: root
+            password:
+            
+            #For mysql database
+            #driverClassName:  'com.mysql.jdbc.Driver'
+            #url: jdbc:mysql://localhost/streama
+            #username: root
+            #password:
+        server:
+            port: 8080
+
+streama:
+  regex:
+    movies: ^(?<Name>.*)[._ ]\(\d{4}\).*
+    shows:
+      - ^(?<Name>.+)[._ ]S(?<Season>\d{2})E(?<Episode>\d{2,3}).*
+      - ^(?<Name>.+)[._ ](?<Season>\d{1,2})x(?<Episode>\d{2,3}).*
+
